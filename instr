@@ -1,0 +1,12 @@
+-1
+sleep 40
+wcheckin
+sleep 10
+wldown
+sleep 10
+checkin
+runmpv
+sleep 140
+quitsession
+reset
+wlup
