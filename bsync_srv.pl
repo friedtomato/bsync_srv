@@ -12,7 +12,6 @@ use Header;
 use Fwsocket;
 
 # number of clients to check in
-#my $NUM_CLI = 3;
 # volume on clients
 my $VOL_CLI = "50";
 my $VOL_INC = "10";
