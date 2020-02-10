@@ -2,7 +2,6 @@
 use strict;
 use warnings;
 use IO::Socket::UNIX;
-use GUI;
 
 
 $| = 1;

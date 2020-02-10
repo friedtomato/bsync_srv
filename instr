@@ -5,6 +5,7 @@ sleep 10
 wldown
 sleep 10
 checkin
+sleep 3
 runmpv
 sleep 140
 quitsession
