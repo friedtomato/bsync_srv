@@ -505,6 +505,58 @@ else{
 	    $ccomm = "empty";
 	    $ccomm_cli = "";
     }
+    elsif ($ccomm eq "pinupl") {
+	    if(!defined($f_ccomm_hist->{"$ccomm"})){
+		    $f_ccomm_hist->{"$ccomm"} = 1;
+	    }
+	    else{
+		    $f_ccomm_hist->{"$ccomm"}++;
+	    }
+	    my $cnum = $f_ccomm_hist->{"$ccomm"};
+	    Flog::item_flog("$host|$CLI_NAME|CLN=$n_active_clients/$Header::NUM_CLI|MOD=$MODE~CFL=$cflag|LCO=$prev_ccomm|COM=$ccomm|CHI=$cnum|VOL=$VOL_CLI%:sending $ccomm bcast");
+	    my $attempts = $BCAST_COUNTS;
+	    while($attempts){
+		    sleep 1;
+		    my $packet;
+		    if($ccomm_cli ne ""){
+			    $packet = "$ccomm_cli:$VOL_CLI%:$ccomm";
+		    }
+		    else{
+			    $packet = "$GO_CLI:$VOL_CLI%:$ccomm";
+		    }
+		    Fsocket::send_bcast($packet);
+		    $attempts--;
+	    }
+	    $prev_ccomm = "pinupl";
+	    $ccomm = "empty";
+	    $ccomm_cli = "";
+    }
+    elsif ($ccomm eq "pindownl") {
+	    if(!defined($f_ccomm_hist->{"$ccomm"})){
+		    $f_ccomm_hist->{"$ccomm"} = 1;
+	    }
+	    else{
+		    $f_ccomm_hist->{"$ccomm"}++;
+	    }
+	    my $cnum = $f_ccomm_hist->{"$ccomm"};
+	    Flog::item_flog("$host|$CLI_NAME|CLN=$n_active_clients/$Header::NUM_CLI|MOD=$MODE~CFL=$cflag|LCO=$prev_ccomm|COM=$ccomm|CHI=$cnum|VOL=$VOL_CLI%:sending $ccomm bcast");
+	    my $attempts = $BCAST_COUNTS;
+	    while($attempts){
+		    sleep 1;
+		    my $packet;
+		    if($ccomm_cli ne ""){
+			    $packet = "$ccomm_cli:$VOL_CLI%:$ccomm";
+		    }
+		    else{
+			    $packet = "$GO_CLI:$VOL_CLI%:$ccomm";
+		    }
+		    Fsocket::send_bcast($packet);
+		    $attempts--;
+	    }
+	    $prev_ccomm = "pindownl";
+	    $ccomm = "empty";
+	    $ccomm_cli = "";
+    }
     elsif ($ccomm eq "quitsession") {
 	    if(!defined($f_ccomm_hist->{"$ccomm"})){
 		    $f_ccomm_hist->{"$ccomm"} = 1;
