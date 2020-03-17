@@ -8,6 +8,7 @@ SET_RUN_DIR=$(BIN_DIR)
 MAIN_BSYNC_RUN=main_bsync_run.sh
 
 BASHRC_DIR=/home/pi
+VIDEO_DIR=/home/pi/video/jack
 
 backup:
 	@echo "backing up $(SCR_DIR) and $(BIN_DIR)"
@@ -22,6 +23,16 @@ backup:
 	@echo $(DATE)
 	@tar -czvf $(USB_BACKUP_DIR)_$(DATE)_$(HOSTNAME).tgz $(USB_BACKUP_DIR)
 	@tar -czvf $(MMC_BACKUP_DIR)_$(DATE)_$(HOSTNAME).tgz $(MMC_BACKUP_DIR)
+
+
+vsync:
+	scp $(VIDEO_DIR)/* 192.168.0.2:$(VIDEO_DIR)
+	scp $(VIDEO_DIR)/* 192.168.0.3:$(VIDEO_DIR)
+	scp $(VIDEO_DIR)/* 192.168.0.4:$(VIDEO_DIR)
+	scp $(VIDEO_DIR)/* 192.168.0.5:$(VIDEO_DIR)
+	scp $(VIDEO_DIR)/* 192.168.0.6:$(VIDEO_DIR)
+	scp $(VIDEO_DIR)/* 192.168.0.7:$(VIDEO_DIR)
+	scp $(VIDEO_DIR)/* 192.168.0.8:$(VIDEO_DIR)
 
 halt:
 	ssh 192.168.0.2 'sudo halt &'
