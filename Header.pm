@@ -3,7 +3,7 @@ package Header;
 use Sys::Hostname;
 
 #number of clients
-$NUM_CLI = 6;
+$NUM_CLI = 7;
 # volume on clients
 $VOL_CLI = "50%";
 # something
