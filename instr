@@ -1,13 +1,20 @@
 -1
-sleep 40
+sleep 2
 wcheckin
 sleep 10
-wldown
-sleep 10
 checkin
+sleep 2
+pindownl
+sleep 1
+pindownf
 sleep 3
 runmpv
 sleep 140
+pinupf
+sleep 1
+pinupl
+sleep 1
 quitsession
+sleep 1
 reset
-wlup
+sleep 120

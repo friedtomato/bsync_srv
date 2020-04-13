@@ -201,6 +201,7 @@ while(!$END_OF_GUI){
 		
 		#server
 		if(($station_type eq "cli") or ($station_type eq "srv")){
+			$hclient_status->{"$cli_name"}->{'hostname'} = $cli_hostname;
 			$hclient_status->{"$cli_name"}->{'cli_count'} = $cli_count;
 			$hclient_status->{"$cli_name"}->{'mode_flag'} = $mode_flag;
 			$hclient_status->{"$cli_name"}->{'delay'} = $delay;

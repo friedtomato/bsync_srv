@@ -24,7 +24,6 @@ backup:
 	@tar -czvf $(USB_BACKUP_DIR)_$(DATE)_$(HOSTNAME).tgz $(USB_BACKUP_DIR)
 	@tar -czvf $(MMC_BACKUP_DIR)_$(DATE)_$(HOSTNAME).tgz $(MMC_BACKUP_DIR)
 
-
 vsync:
 	scp $(VIDEO_DIR)/* 192.168.0.2:$(VIDEO_DIR)
 	scp $(VIDEO_DIR)/* 192.168.0.3:$(VIDEO_DIR)
@@ -33,6 +32,7 @@ vsync:
 	scp $(VIDEO_DIR)/* 192.168.0.6:$(VIDEO_DIR)
 	scp $(VIDEO_DIR)/* 192.168.0.7:$(VIDEO_DIR)
 	scp $(VIDEO_DIR)/* 192.168.0.8:$(VIDEO_DIR)
+	scp $(VIDEO_DIR)/* 192.168.0.9:$(VIDEO_DIR)
 
 halt:
 	ssh 192.168.0.2 'sudo halt &'
@@ -42,6 +42,7 @@ halt:
 	ssh 192.168.0.6 'sudo halt &'
 	ssh 192.168.0.7 'sudo halt &'
 	ssh 192.168.0.8 'sudo halt &'
+	ssh 192.168.0.9 'sudo halt &'
 
 reboot:
 	@ssh 192.168.0.2 'sudo reboot &'
@@ -51,6 +52,7 @@ reboot:
 	@ssh 192.168.0.6 'sudo reboot &'
 	@ssh 192.168.0.7 'sudo reboot &'
 	@ssh 192.168.0.8 'sudo reboot &'
+	@ssh 192.168.0.9 'sudo reboot &'
 
 reboot2:
 	@ssh 192.168.0.2 'sudo reboot &'
@@ -66,7 +68,8 @@ reboot7:
 	@ssh 192.168.0.7 'sudo reboot &'
 reboot8:
 	@ssh 192.168.0.8 'sudo reboot &'
-
+reboot9:
+	@ssh 192.168.0.9 'sudo reboot &'
 
 run:
 	@ssh 192.168.0.1 'sed -i ''s/BSYNC_RUN=n/BSYNC_RUN=r/'' /home/pi/bsync_srv_vardef.sh'
@@ -77,6 +80,7 @@ run:
 	@ssh 192.168.0.6 'sed -i ''s/BSYNC_RUN=n/BSYNC_RUN=r/'' /home/pi/bsync_cli_vardef.sh'
 	@ssh 192.168.0.7 'sed -i ''s/BSYNC_RUN=n/BSYNC_RUN=r/'' /home/pi/bsync_cli_vardef.sh'
 	@ssh 192.168.0.8 'sed -i ''s/BSYNC_RUN=n/BSYNC_RUN=r/'' /home/pi/bsync_cli_vardef.sh'
+	@ssh 192.168.0.9 'sed -i ''s/BSYNC_RUN=n/BSYNC_RUN=r/'' /home/pi/bsync_cli_vardef.sh'
 
 norun: 
 	@ssh 192.168.0.1 'sed -i ''s/BSYNC_RUN=r/BSYNC_RUN=n/'' /home/pi/bsync_srv_vardef.sh'
@@ -87,6 +91,7 @@ norun:
 	@ssh 192.168.0.6 'sed -i ''s/BSYNC_RUN=r/BSYNC_RUN=n/'' /home/pi/bsync_cli_vardef.sh'
 	@ssh 192.168.0.7 'sed -i ''s/BSYNC_RUN=r/BSYNC_RUN=n/'' /home/pi/bsync_cli_vardef.sh'
 	@ssh 192.168.0.8 'sed -i ''s/BSYNC_RUN=r/BSYNC_RUN=n/'' /home/pi/bsync_cli_vardef.sh'
+	@ssh 192.168.0.9 'sed -i ''s/BSYNC_RUN=r/BSYNC_RUN=n/'' /home/pi/bsync_cli_vardef.sh'
 cmanual:	
 	@ssh 192.168.0.2 'sed -i ''s/BSYNC_MOD=a/BSYNC_MOD=m/'' /home/pi/bsync_cli_vardef.sh'
 	@ssh 192.168.0.3 'sed -i ''s/BSYNC_MOD=a/BSYNC_MOD=m/'' /home/pi/bsync_cli_vardef.sh'
@@ -95,6 +100,7 @@ cmanual:
 	@ssh 192.168.0.6 'sed -i ''s/BSYNC_MOD=a/BSYNC_MOD=m/'' /home/pi/bsync_cli_vardef.sh'
 	@ssh 192.168.0.7 'sed -i ''s/BSYNC_MOD=a/BSYNC_MOD=m/'' /home/pi/bsync_cli_vardef.sh'
 	@ssh 192.168.0.8 'sed -i ''s/BSYNC_MOD=a/BSYNC_MOD=m/'' /home/pi/bsync_cli_vardef.sh'
+	@ssh 192.168.0.9 'sed -i ''s/BSYNC_MOD=a/BSYNC_MOD=m/'' /home/pi/bsync_cli_vardef.sh'
 cauto:	
 	@ssh 192.168.0.2 'sed -i ''s/BSYNC_MOD=m/BSYNC_MOD=a/'' /home/pi/bsync_cli_vardef.sh'
 	@ssh 192.168.0.3 'sed -i ''s/BSYNC_MOD=m/BSYNC_MOD=a/'' /home/pi/bsync_cli_vardef.sh'
@@ -103,4 +109,5 @@ cauto:
 	@ssh 192.168.0.6 'sed -i ''s/BSYNC_MOD=m/BSYNC_MOD=a/'' /home/pi/bsync_cli_vardef.sh'
 	@ssh 192.168.0.7 'sed -i ''s/BSYNC_MOD=m/BSYNC_MOD=a/'' /home/pi/bsync_cli_vardef.sh'
 	@ssh 192.168.0.8 'sed -i ''s/BSYNC_MOD=m/BSYNC_MOD=a/'' /home/pi/bsync_cli_vardef.sh'
+	@ssh 192.168.0.9 'sed -i ''s/BSYNC_MOD=m/BSYNC_MOD=a/'' /home/pi/bsync_cli_vardef.sh'
 
